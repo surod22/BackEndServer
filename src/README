@@ -1,0 +1,22 @@
+
+
+Assumptions 
+Word definition:
+-no digits
+-no , or . or space
+
+Problem 1: 
+Return type: Integer
+I assume a word is not going to have 
+decimal length, therefore I take the floor of the avg. 
+
+
+To run: 
+Go inside project directory and do the following
+mvn compile           //compile code, build dependencies
+mvn spring-boot:run   //run server and leave it running to run curl command 
+
+Open seperate tab
+curl -X POST -H "Content-type: application/json" -d "{'text':'My cat is gray. It doesn\'t have feathers.'}" http://localhost:8080/words/avg_len
+
+
