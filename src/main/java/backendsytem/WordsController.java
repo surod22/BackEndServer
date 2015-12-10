@@ -17,8 +17,7 @@ import java.io.IOException;
 @Controller
 public class WordsController {
 
-    @RequestMapping(value = "/words/avg_len",
-            method= RequestMethod.POST,
+    @RequestMapping(value = "/words/avg_len", method= RequestMethod.POST,
             produces = "application/json",
             consumes = "application/json")
     @ResponseBody
@@ -29,8 +28,7 @@ public class WordsController {
         return gson.toJson(wordService.averageWordLength(words.getText())).concat("\n");
     }
 
-    @RequestMapping(value = "/words/most_com",
-            method= RequestMethod.POST,
+    @RequestMapping(value = "/words/most_com", method= RequestMethod.POST,
             produces = "application/json",
             consumes = "application/json")
     @ResponseBody
@@ -41,4 +39,15 @@ public class WordsController {
         return gson.toJson(wordService.mostCommonWord(words.getText())).concat("\n");
     }
 
+
+    @RequestMapping(value = "/words/median", method= RequestMethod.POST,
+            produces = "application/json",
+            consumes = "application/json")
+    @ResponseBody
+    public String medianWordHandler(@RequestBody String jsonString, Model model) throws IOException {
+        Gson gson = new Gson();
+        Words words = gson.fromJson(jsonString, Words.class);
+        WordService wordService = new WordService();
+        return gson.toJson(wordService.median(words.getText())).concat("\n");
+    }
 }

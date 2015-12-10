@@ -49,6 +49,17 @@ public class WordServiceTest {
         assertThat(words).hasSize(2);
     }
 
+    @Test
+    public void extractWordsReturnsSameWordGivenStringWithCharsNotCommaDotOrSpace(){}
+    {
+        WordService wordService = new WordService();
+
+        String[] words = wordService.extractWords("Si!nosi");
+
+        assertThat(words[0]).isEqualTo("Si!nosi");
+
+        assertThat(words).hasSize(1);
+    }
 
     @Test
     public void extractWordsReturnsTwoWordsGiveWordsAndComma(){
@@ -115,6 +126,87 @@ public class WordServiceTest {
         Integer result = wordService.averageWordLength("I.total.i");
 
         assertThat(result).isEqualTo(2);
+    }
+
+    @Test
+    public void mostCommonWordReturnsTheSameWordGivenOneWord(){
+        WordService wordService = new WordService();
+
+        String common = wordService.mostCommonWord("ONE");
+
+        assertThat(common).isEqualTo("ONE");
+    }
+
+    @Test
+    public void mostCommonWordReturnsFirstAlphabeticalWordGivenTwoWords(){
+        WordService wordService = new WordService();
+
+        String common = wordService.mostCommonWord("ONE,AMY");
+
+        assertThat(common).isEqualTo("AMY");
+    }
+
+    @Test
+    public void mostCommonWordReturnsWordWithHigherFrequency(){
+        WordService wordService = new WordService();
+
+        String common = wordService.mostCommonWord("ONE,AMY Chicken Chicken Chicken");
+
+        assertThat(common).isEqualTo("Chicken");
+    }
+
+    @Test
+    public void mostCommonWordReturnsEmptyStringGivenEmptyString(){
+        WordService wordService = new WordService();
+
+        String common = wordService.mostCommonWord("");
+
+        assertThat(common).isEqualTo("");
+    }
+
+    @Test
+    public void mostCommonWordReturnsAllUniqueMessageGivenAllWordsAreUnique(){
+        WordService wordService = new WordService();
+
+        String common = wordService.mostCommonWord("Under the umbrella");
+
+        assertThat(common).isEqualTo("umbrella");
+    }
+
+    @Test
+    public void medianReturnsEmptyStringGivenEmptyString(){
+        WordService wordService = new WordService();
+
+        String median = wordService.median("");
+
+        assertThat(median).isEqualTo("");
+    }
+
+    @Test
+    public void medianReturnsWordGivenOneWord(){
+        WordService wordService = new WordService();
+
+        String median = wordService.median("history");
+
+        assertThat(median).isEqualTo("history");
+    }
+
+    @Test
+    public void medianReturnsWordInMiddleGivenOddNumberOfWords(){
+        WordService wordService = new WordService();
+
+        String median = wordService.median("history hello.today");
+
+        assertThat(median).isEqualTo("hello");
+    }
+
+    @Test
+    public void medianReturnsWordLocatedHalfOfLengthGivenEvenNumberOfWords(){
+        WordService wordService = new WordService();
+
+        String median = wordService.median("Skeptical !November for laughing outside so");
+
+        assertThat(median).isEqualTo("laughing");
     }
 
 
