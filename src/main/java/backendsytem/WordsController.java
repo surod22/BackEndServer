@@ -30,7 +30,7 @@ public class WordsController {
 
     @RequestMapping(value = "/words/most_com", method= RequestMethod.POST,
             produces = "application/json",
-            consumes = "application/json")
+            consumes = "application/json")  
     @ResponseBody
     public String mostCommonWordHandler(@RequestBody String jsonString, Model model) throws IOException {
         Gson gson = new Gson();
@@ -39,8 +39,8 @@ public class WordsController {
         return gson.toJson(wordService.mostCommonWord(words.getText())).concat("\n");
     }
 
-
     @RequestMapping(value = "/words/median", method= RequestMethod.POST,
+
             produces = "application/json",
             consumes = "application/json")
     @ResponseBody

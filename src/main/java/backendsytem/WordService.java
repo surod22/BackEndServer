@@ -2,9 +2,6 @@ package backendsytem;
 
 import java.util.HashMap;
 
-/**
- * Created by srodriguez on 12/3/15.
- */
 public class WordService {
     public int averageWordLength(String text) {
         String[] words = extractWords(text);

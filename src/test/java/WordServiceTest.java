@@ -3,11 +3,9 @@ import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.ExpectedException;
 
-import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.AssertionsForInterfaceTypes.assertThat;
 
-/**
- * Created by srodriguez on 12/3/15.
- */
+
 public class WordServiceTest {
     @Rule
     public ExpectedException expectedException = ExpectedException.none();

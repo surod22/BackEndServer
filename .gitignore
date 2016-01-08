@@ -1,1 +1,4 @@
-./idea
+.idea/
+target/
+BackEndSystem.iml
+gs-serving-web-content.iml

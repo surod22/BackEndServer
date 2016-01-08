@@ -2,9 +2,6 @@ package backendsytem;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-/**
- * Created by srodriguez on 12/3/15.
- */
 public class Words {
 
     @JsonProperty("text")
