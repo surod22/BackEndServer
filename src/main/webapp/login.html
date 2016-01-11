@@ -1,0 +1,19 @@
+<div class="alert alert-danger" ng-show="error">
+    There was a problem logging in.
+</div>
+<div class="container">
+    <div class="col-sm-8 col-sm-offset-2">
+        <div class="page-header"><h1>Post words using angularJS</h1></div>
+        <form name="wordForm" ng-submit="submitForm()">
+            <div class="form-group">
+                <p>Enter String:
+                    <input type="text" name="text" class="form-control" ng-model="words.text"></p>
+                <span ng-show="errorName">{{errorName}}</span>
+                <p>This string:{{text}}</p>
+                <p>Input:{{text}}</p>
+
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+    </div>
+</div>
