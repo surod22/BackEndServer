@@ -13,6 +13,7 @@ decimal length, therefore I take the floor of the avg.
 
 To run: 
 Go inside project directory and do the following
+mvn package
 mvn compile           //compile code, build dependencies
 mvn spring-boot:run   //run server and leave it running to run curl command 
 
@@ -20,3 +21,6 @@ Open seperate tab
 curl -X POST -H "Content-type: application/json" -d "{'text':'My cat is gray. It doesn\'t have feathers.'}" http://localhost:8080/words/avg_len
 
 
+http://stackoverflow.com/questions/5908466/jquery-spring-mvc-requestbody-and-json-making-it-work-together/5908632#5908632
+
+http://stackoverflow.com/questions/19619088/required-string-parameter-is-not-present-error-in-spring-mvc
