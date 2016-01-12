@@ -27,4 +27,22 @@ angular.module('sigfigs', ['ngRoute'])
 //            $scope.words.avglength = data.avglength
 //     })
 })
-.controller('navigation', function() {});
+.controller('navigation', function() {
+
+     $scope.submitForm = function(){
+        $scope.words = []
+
+        $http.post({'/words/avg_len',
+            {   text : $scope.words.text},
+                {'Content-Type': 'application/json'}
+            })
+            .then(function(results){
+                console.log('mid', data);
+                $scope.words.text = data.text
+                $scope.words.avglength = data.avglength
+            }).catch(function(response){
+                console.log('Error', response.data.errors);
+            })
+     }
+
+});
