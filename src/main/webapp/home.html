@@ -1,13 +1,9 @@
 
 <h1>The Home</h1>
-<div ng-show="authenticated">
     <p>Enter String:
         <input type="text" ng-model="text"></p>
-    <p>This string:{{text}}</p>
-    <p>Input:{{text}}</p>
-    <p>Result: {{avglen}}</p>
-</div>
-<div ng-show"!authenticated">
-    <p>Login to see your greeting</p>
+    <p>This string:{{words.text}}</p>
+    <p>Input:{{words.text}}</p>
+    <p>Result: {{words.avglength}}</p>
 </div>
 

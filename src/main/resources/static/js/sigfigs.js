@@ -2,7 +2,7 @@ angular.module('sigfigs', ['ngRoute'])
     .config(function($routeProvider, $httpProvider){
 
         $routeProvider.when('/', {
-            templateUrl : 'home.html'
+            templateUrl : 'home.html',
             controller : 'home'
         }).when('/login', {
             templateUrl : 'login.html',
@@ -12,32 +12,19 @@ angular.module('sigfigs', ['ngRoute'])
         $httpProvider.defaults.headers.common["X-Requested-With"] = 'XMLHttpRequest';
     })
 .controller('home', function($scope, $http){
+    $scope.words = []
+
     $http.get('/main/').success(function(data){
-        $scope.message = data; 
+        $scope.words = data
+
     })
+
+//     $http.post({'/words/avg_len',
+//            { text : $scope.words.text},
+//            {'Content-Type': 'application/json'}
+//     }).success(function(data) {
+//            $scope.words.text = data.text
+//            $scope.words.avglength = data.avglength
+//     })
 })
-.controller('navigation',
-        function( $scope, $http, $location){
-
-
-        $scope.submitForm = function(){
-            $http.post({'/words/avg_len',
-                {   text : $scope.words.text},
-                {'Content-Type': 'application/json'}
-            })
-            .then(function(results){
-                console.log('mid', results);
-
-            }).catch(function(response){
-                console.log('Error', response.data.errors);
-            })
-        }
-        });
-
-        //var authenticate = function(words, callback){
-        //    $http.post('/words/avg_len').success(function(data)){
-        //                $scope.text = data.text;
-        //                $scope.avglen = data.avgLength;
-        //    }
-        //}
-
+.controller('navigation', function() {});

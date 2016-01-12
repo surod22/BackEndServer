@@ -1,38 +1,33 @@
 package backendsytem;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.gson.Gson;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.io.IOException;
-import java.util.HashMap;
 
 @RestController
 @EnableAutoConfiguration
 public class WordsController {
 
     @RequestMapping(value="/main")
-    public HashMap<String, Object> home(){
-        HashMap<String, Object> model = new HashMap<String, Object>();
-        model.put("id", "1234");
-        model.put("content", "Hello world");
-        return model;
+    public Words home(){
+        return new Words();
     }
     @RequestMapping(value = "/words/avg_len", method= RequestMethod.POST,
             produces = "application/json",
             consumes = "application/json")
     @ResponseBody
-    public ResponseEntity<Words> avglenHandler(@RequestBody Words words) throws IOException {
+    public String avglenHandler(@RequestBody Words words) throws IOException {
         WordService wordService = new WordService();
         words.setAvgLength(wordService.averageWordLength(words.getText()));
-        HashMap<String, Integer> model = new HashMap<String, Integer>();
-        model.put("avgLength", words.getAvgLength());
         //return model;
-        return new ResponseEntity<Words>(words, HttpStatus.ACCEPTED);
-
+        //return new ResponseEntity<Words>(words, HttpStatus.ACCEPTED);
+        ObjectMapper mapper = new ObjectMapper();
+        String response = mapper.writeValueAsString(words);
+        return response;
     }
 
 

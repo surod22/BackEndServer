@@ -7,13 +7,13 @@
         <form name="wordForm" ng-submit="submitForm()">
             <div class="form-group">
                 <p>Enter String:
-                    <input type="text" name="text" class="form-control" ng-model="words.text"></p>
+                    <input type="text" name="text" class="form-control" ng-model="text"></p>
                 <span ng-show="errorName">{{errorName}}</span>
-                <p>This string:{{text}}</p>
-                <p>Input:{{text}}</p>
 
             </div>
             <button type="submit" class="btn btn-primary">Submit</button>
         </form>
+        <p>Input:{{text}}</p>
+        <p>Result: {{avgLen}}</p>
     </div>
 </div>

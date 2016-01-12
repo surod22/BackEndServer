@@ -9,6 +9,7 @@ public class Words {
     @JsonProperty("text")
     private String text;
 
+    @JsonProperty("avglength")
     private int avgLength;
 
     public Words(){}
