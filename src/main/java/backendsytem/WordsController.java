@@ -31,8 +31,6 @@ public class WordsController {
         return response;
     }
 
-
-
     @RequestMapping(value = "/words/most_com", method= RequestMethod.POST,
             produces = "application/json",
             consumes = "application/json")

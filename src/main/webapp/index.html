@@ -16,11 +16,13 @@
     <script src="js/sigfigs.js"></script>
 
     <div ng-controller="navigation" class="container" >
-        <ul class="nav nav-pills" role="tablist">
-            <li class="active"><a href="#/">home</a></li>
-            <li><a href="#/words">words</a></li>
-            <li ng-show="authenticated"><a href="" ng-click="logout()">logout</a></li>
-        </ul>
+        <div class="header clearfix">
+            <ul class="nav nav-pills" role="tablist">
+                <li class="active"><a href="#/">home</a></li>
+                <li><a href="#/words">words</a></li>
+                <li ng-show="authenticated"><a href="" ng-click="logout()">logout</a></li>
+            </ul>
+        </div>
     </div>
     <div ng-view class="container"></div>
 </body>

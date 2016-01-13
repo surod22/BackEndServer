@@ -1,15 +1,42 @@
+My graphics portfolio and words API
+Description:
+Home page displays some of the graphics I have made
 
+Words page displays and input filed that takes in a sentence.
+The button makes calls to a couple of endpoints to do the computations
+below on the sentence
+- average length of a word across all the words in the text
+
+
+Assumptions
+Word definition:
+-no digits
+-no , or . or space
+
+To run:
+Go inside project directory and do the following
+
+$ mvn package
+$ mvn compile           //compile code, build dependencies
+$ mvn spring-boot:run   //run server and leave it running to run curl command
+
+To view application go to the url below.
+When you the url please wait a little for all images to load.
+Also you can navigate between pages with the tabs in the header.
+
+Home url:
+http://localhost:8080/#/
+
+Words url:
+http://localhost:8080/#/words
+
+
+Words page
 
 Assumptions 
 Word definition:
 -no digits
 -no , or . or space
-
-Problem 1: 
-Return type: Integer
-I assume a word is not going to have 
-decimal length, therefore I take the floor of the avg. 
-
 
 To run: 
 Go inside project directory and do the following

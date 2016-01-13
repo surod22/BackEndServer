@@ -12,6 +12,32 @@ angular.module('sigfigs', ['ngRoute'])
 
     .controller('home', function ($scope, $http) {
         $scope.words = [];
+
+        $scope.images =[
+            {url: '/images/DevasBack.png'},
+            {url: '/images/DevasFront.png'},
+            {url: '/images/AppDevelopment.jpg'},
+            {url: '/images/BotballGroundAerial.jpg'},
+            {url: '/images/FrcRobotics.jpg'},
+            {url: '/images/EngCompetitions.jpg'},
+            {url: '/images/CellBackground.png'},
+            {url: '/images/DevasTshirtRegularEarth.jpg'},
+            {url: '/images/GlamsTshirtsDesing.jpg'},
+            {url: '/images/SummerBridge2011Green.jpg'},
+            {url: '/images/SummerBridge2011tshirt.jpg'},
+            {url: '/images/Flyer.png'},
+            {url: '/images/FlyerRuntitle.png'},
+            {url: '/images/FlyerRuntitleFinalUser300PNG.png'},
+            {url: '/images/MapFinal.png'},
+            {url: '/images/MuralBlack1.jpg'},
+            {url: '/images/MuralBlue5.jpg'},
+            {url: '/images/SplashScreen3_320x416.png'},
+            {url: '/images/StoreAdd.png'},
+            {url: '/images/SplashScreen.png'},
+            {url: '/images/UnderWater.jpg'}
+
+        ]
+
         $http.get('/main/').success(function (data) {
             $scope.words = data;
         });

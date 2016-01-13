@@ -123,6 +123,7 @@
                     <wroManagerFactory>ro.isdc.wro.maven.plugin.manager.factory.ConfigurableWroManagerFactory</wroManagerFactory>
                     <cssDestinationFolder>${project.build.directory}/generated-resources/static/css</cssDestinationFolder>
                     <jsDestinationFolder>${project.build.directory}/generated-resources/static/js</jsDestinationFolder>
+                    <destinationFolder>${projct.build.directory}/generated-resources/public/images/graphicsportfolio</destinationFolder>
                     <wroFile>${basedir}/src/main/webapp/WEB-INF/wro.xml</wroFile>
                     <extraConfigFile>src/main/webapp/WEB-INF/wro.properties</extraConfigFile>
                     <contextFolder>${basedir}/src/main/webapp/WEB-INF</contextFolder>
