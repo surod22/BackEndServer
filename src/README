@@ -6,7 +6,14 @@ Words page displays and input filed that takes in a sentence.
 The button makes calls to a couple of endpoints to do the computations
 below on the sentence
 - average length of a word across all the words in the text
+  Input: text
+  Ouput: a number
 
+- word that occurs most frequently in the text
+    For multiple words having the same frequency,
+    ties are broken by choosing the word that comes first alphabetically.
+    Input: text
+    Output: a single word
 
 Assumptions
 Word definition:
@@ -44,5 +51,5 @@ mvn package
 mvn compile           //compile code, build dependencies
 mvn spring-boot:run   //run server and leave it running to run curl command 
 
-Open seperate tab
+Can also curl the endpoint using the following 
 curl -X POST -H 'Content-type: application/json' -d "{\"text\":\"My cat is gray. It doesn't have feathers.\"}" http://localhost:8080/words/avg_len
