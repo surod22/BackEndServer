@@ -12,6 +12,9 @@ public class Words {
     @JsonProperty("avglength")
     private int avgLength;
 
+    @JsonProperty("mostcommon")
+    private String mostCommon;
+
     public Words(){}
 
     public String getText() {
@@ -28,5 +31,9 @@ public class Words {
 
     public void setAvgLength(int avgLength) {
         this.avgLength = avgLength;
+    }
+
+    public void setMostCommon(String mostCommon) {
+        this.mostCommon = mostCommon;
     }
 }

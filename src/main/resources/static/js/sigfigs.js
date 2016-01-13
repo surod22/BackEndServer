@@ -1,48 +1,47 @@
 angular.module('sigfigs', ['ngRoute'])
-    .config(function($routeProvider, $httpProvider){
-
+    .config(function ($routeProvider, $httpProvider) {
         $routeProvider.when('/', {
-            templateUrl : 'home.html',
-            controller : 'home'
-        }).when('/login', {
-            templateUrl : 'login.html',
-            controller : 'navigation'
+            templateUrl: 'home.html',
+            controller: 'home'
+        }).when('/words', {
+            templateUrl: 'words.html',
+            controller: 'navigation'
         }).otherwise('/');
-
         $httpProvider.defaults.headers.common["X-Requested-With"] = 'XMLHttpRequest';
     })
-.controller('home', function($scope, $http){
-    $scope.words = []
 
-    $http.get('/main/').success(function(data){
-        $scope.words = data
+    .controller('home', function ($scope, $http) {
+        $scope.words = [];
+        $http.get('/main/').success(function (data) {
+            $scope.words = data;
+        });
 
     })
 
-//     $http.post({'/words/avg_len',
-//            { text : $scope.words.text},
-//            {'Content-Type': 'application/json'}
-//     }).success(function(data) {
-//            $scope.words.text = data.text
-//            $scope.words.avglength = data.avglength
-//     })
-})
-.controller('navigation', function() {
+    .controller('navigation', function ($scope, $http, $log) {
 
-     $scope.submitForm = function(){
-        $scope.words = []
+        $scope.text = ''
+        $scope.avglength = ''
+        $scope.mostcommon = ''
 
-        $http.post({'/words/avg_len',
-            {   text : $scope.words.text},
-                {'Content-Type': 'application/json'}
+        $scope.submitForm = function () {
+            $http({
+                url: '/words/avg_len',
+                method: "POST",
+                data: {'text': $scope.text}
+            }
+            ).then(function (response) {
+                 console.log(response.data);
+                $scope.avglength = response.data.avglength
             })
-            .then(function(results){
-                console.log('mid', data);
-                $scope.words.text = data.text
-                $scope.words.avglength = data.avglength
-            }).catch(function(response){
-                console.log('Error', response.data.errors);
-            })
-     }
 
-});
+            $http({
+                url: '/words/most_com',
+                method: "POST",
+                data: {'text': $scope.text}
+            }).then(function (response) {
+                console.log(response.data);
+                $scope.mostcommon = response.data.mostcommon
+            })
+        }
+    });

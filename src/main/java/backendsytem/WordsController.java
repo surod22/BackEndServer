@@ -16,17 +16,18 @@ public class WordsController {
     public Words home(){
         return new Words();
     }
+
     @RequestMapping(value = "/words/avg_len", method= RequestMethod.POST,
             produces = "application/json",
             consumes = "application/json")
     @ResponseBody
     public String avglenHandler(@RequestBody Words words) throws IOException {
         WordService wordService = new WordService();
-        words.setAvgLength(wordService.averageWordLength(words.getText()));
-        //return model;
-        //return new ResponseEntity<Words>(words, HttpStatus.ACCEPTED);
         ObjectMapper mapper = new ObjectMapper();
+
+        words.setAvgLength(wordService.averageWordLength(words.getText()));
         String response = mapper.writeValueAsString(words);
+
         return response;
     }
 
@@ -36,11 +37,14 @@ public class WordsController {
             produces = "application/json",
             consumes = "application/json")
     @ResponseBody
-    public String mostCommonWordHandler(@RequestBody String jsonString, Model model) throws IOException {
-        Gson gson = new Gson();
-        Words words = gson.fromJson(jsonString, Words.class);
+    public String mostCommonWordHandler(@RequestBody Words words) throws IOException {
         WordService wordService = new WordService();
-        return gson.toJson(wordService.mostCommonWord(words.getText())).concat("\n");
+        ObjectMapper mapper = new ObjectMapper();
+
+        words.setMostCommon(wordService.mostCommonWord(words.getText()));
+        String response = mapper.writeValueAsString(words);
+
+        return response;
     }
 
     @RequestMapping(value = "/words/median", method= RequestMethod.POST,

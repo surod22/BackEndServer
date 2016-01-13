@@ -145,10 +145,19 @@ public class WordServiceTest {
     }
 
     @Test
+    public void getLowerAlphabeticalReturnsFirstAlphabeticalGivenUpperCaseWords(){
+        WordService wordService = new WordService();
+
+        String lower = wordService.getLowerAlphabetic("ONE", "AMY");
+
+        assertThat(lower).isEqualTo("AMY");
+    }
+
+    @Test
     public void mostCommonWordReturnsWordWithHigherFrequency(){
         WordService wordService = new WordService();
 
-        String common = wordService.mostCommonWord("ONE,AMY Chicken Chicken Chicken");
+        String common = wordService.mostCommonWord("ONE,AMY Chicken Chicken not");
 
         assertThat(common).isEqualTo("Chicken");
     }
@@ -168,7 +177,7 @@ public class WordServiceTest {
 
         String common = wordService.mostCommonWord("Under the umbrella");
 
-        assertThat(common).isEqualTo("umbrella");
+        assertThat(common).isEqualTo("the");
     }
 
     @Test

@@ -37,39 +37,48 @@ public class WordService {
         String[] words = extractWords(text);
         HashMap<String, Integer> frequency = new HashMap<String, Integer>();
 
-        if(words.length == (0)){
+        if(words.length <=1){
             return text;
         }
 
-        if(words.length == (1)){
-            return text;
-        }
-
-        String currentMaxWord = words[0];
+        String currentCommonWord = "";
         for(String word: words){
-
             if(frequency.containsKey(word)){
-                frequency.put(word ,frequency.get(word)+1);
+                frequency.put(word, frequency.get(word)+1);
+
             } else{
                 frequency.put(word,1);
-                    currentMaxWord = word;
+                if(currentCommonWord == ""){
+                    currentCommonWord = word;
+                }
             }
 
-                boolean isGreaterFrequency = frequency.get(word) > frequency.get(currentMaxWord);
-                if(isGreaterFrequency || isSameFrequencyLowerAlphabetic(frequency, currentMaxWord, word)) {
-                    currentMaxWord = word;
-                }
+            if(frequency.get(word)==frequency.get(currentCommonWord)){
+                currentCommonWord = getLowerAlphabetic(currentCommonWord, word);
+            }
+            if(frequency.get(word)>frequency.get(currentCommonWord)){
+                currentCommonWord = word;
+            }
         }
-        if(currentMaxWord.equals(words.length-1)){
-            return "All words in sentence are unique";
-        }
-        return  currentMaxWord;
+
+        return  currentCommonWord;
 
     }
 
-    private boolean isSameFrequencyLowerAlphabetic(HashMap<String, Integer> frequency, String currentMaxWord, String word) {
-        return frequency.get(word)==frequency.get(currentMaxWord)&&
-                    currentMaxWord.compareTo(word)>0;
+    public String getLowerAlphabetic(String currentMaxWord, String word) {
+        String firstWordAlphabetical = "";
+        String firstWordLower = currentMaxWord.toLowerCase();
+        String secondWordLower = word.toLowerCase();
+        if(firstWordLower.compareTo(secondWordLower)<0){
+            firstWordAlphabetical = currentMaxWord;
+
+        }if(firstWordLower.compareTo(secondWordLower)>0){
+            firstWordAlphabetical = word;
+
+        }else{
+            firstWordAlphabetical = currentMaxWord;
+        }
+        return firstWordAlphabetical;
     }
 
     public String median(String text) {

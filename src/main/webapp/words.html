@@ -10,10 +10,14 @@
                     <input type="text" name="text" class="form-control" ng-model="text"></p>
                 <span ng-show="errorName">{{errorName}}</span>
 
+                <p>Input:{{text}}</p>
             </div>
             <button type="submit" class="btn btn-primary">Submit</button>
         </form>
-        <p>Input:{{text}}</p>
-        <p>Result: {{avgLen}}</p>
+        <div>
+            <p>Average word length: {{avglength}}</p>
+            <p>Avg word length: {{avglength}}</p>
+            <p>Most common word : {{mostcommon}}</p>
+        </div>
     </div>
 </div>
