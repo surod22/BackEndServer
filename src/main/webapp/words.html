@@ -1,9 +1,42 @@
+
 <div class="alert alert-danger" ng-show="error">
     There was a problem logging in.
 </div>
+
 <div class="container">
     <div class="col-sm-8 col-sm-offset-2">
         <div class="page-header"><h1>Post words using angularJS</h1></div>
+        <div clas="container">
+            <div class="jumbotron">
+                <p>
+                    <h4>
+                    Words page displays an input filed that takes in a sentence.The submit makes calls to a couple of endpoints to do the computations below on the sentence
+                    </h4>
+                </p>
+                <h2>Average length of a words</h2>
+                <p>
+                    <h4>Computes the average length of words,
+                    across all the words in the text
+                    </h4>
+                </p>
+                <p><h4>Input: text, Ouput: a number</h4></p>
+                <h2>Word that occurs most frequently in the text</h2>
+                <p>
+                    <h4>
+                    For multiple words having the same frequency,
+                    ties are broken by choosing the word that comes
+                    first alphabetically
+                    </h4>
+                </p>
+                <p>
+                    <h4>Input: text , Output: a single word</h4>
+                </p>
+
+                <h2>Assumptions</h2>
+                <p><h4>Word definition:
+                    has no digits, commas , periods or space</h4></p>
+            </div>
+        </div>
         <form name="wordForm" ng-submit="submitForm()">
             <div class="form-group">
                 <p><h2>Enter some words:</h2>
@@ -11,7 +44,7 @@
                     <input type="text" name="text" class="form-control" ng-model="text"></p>
                 <span ng-show="errorName">{{errorName}}</span>
 
-                <p>Input: {{text}}</p>
+                <p><h4>Input: {{text}}</h4></p>
             </div>
             <button type="submit" class="btn btn-primary">Submit</button>
         </form>

@@ -3,7 +3,7 @@ Description:
 Home page displays some of the graphics I have made
 
 Words page displays and input filed that takes in a sentence.
-The button makes calls to a couple of endpoints to do the computations
+The submit makes calls to a couple of endpoints to do the computations
 below on the sentence
 - average length of a word across all the words in the text
   Input: text
@@ -38,9 +38,7 @@ Words url:
 http://localhost:8080/#/words
 
 
-Words page
-
-Assumptions 
+Words page assumptions
 Word definition:
 -no digits
 -no , or . or space
@@ -51,5 +49,5 @@ mvn package
 mvn compile           //compile code, build dependencies
 mvn spring-boot:run   //run server and leave it running to run curl command 
 
-Can also curl the endpoint using the following 
+Can also curl the endpoint using the following
 curl -X POST -H 'Content-type: application/json' -d "{\"text\":\"My cat is gray. It doesn't have feathers.\"}" http://localhost:8080/words/avg_len

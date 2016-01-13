@@ -57,7 +57,6 @@ angular.module('sigfigs', ['ngRoute'])
                 data: {'text': $scope.text}
             }
             ).then(function (response) {
-                 console.log(response.data);
                 $scope.avglength = response.data.avglength
             })
 
@@ -66,7 +65,6 @@ angular.module('sigfigs', ['ngRoute'])
                 method: "POST",
                 data: {'text': $scope.text}
             }).then(function (response) {
-                console.log(response.data);
                 $scope.mostcommon = response.data.mostcommon
             })
         }
